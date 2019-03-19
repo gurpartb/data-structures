@@ -46,25 +46,31 @@ class LinkedList{
         }
 
         let current = this.head;
-        let previous;
         let current_index = 0;
+
         while(current.next){
-            previous = current;
+
+            let previous = current;
             current = current.next;
             current_index += 1;
+
             if(current_index === index){
-                previous.next = previous.next.next
+                previous.next = current.next;
                 break;
             }
         }
     }
 
     print(){
+
         let current = this.head;
+
         while(current){
-            process.stdout.write(current.data.toString()+" ");
+            
+            process.stdout.write(' '+current.data);
             current = current.next;
         }
+
         process.stdout.write('\n')
     }
 }
