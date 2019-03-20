@@ -18,10 +18,7 @@ class LinkedList{
         this.head;
         this.add(data);
     }
-
-    // traverse down from head till you find 'null'
-    // create a node and set pointer to new node
-    // instead of the null
+    
     add(data){
 
         if(!this.head){
@@ -38,7 +35,37 @@ class LinkedList{
         last.next = new Node(data);
     }
 
-    remove(index){
+    addAt(index, data){
+        if(!this.head){
+            return;
+        }
+        
+        let current = this.head;
+        let currentIndex = 0;
+        if(index === 0){
+            this.head = new Node(data);
+            this.head.next = current;
+        }
+
+        while(current.next){
+
+            let previous = current;
+            current = current.next;
+            currentIndex +=1;
+
+            if(index === currentIndex){
+                previous.next = new Node(data);
+                previous.next.next = current;
+                return;
+            }
+        }
+    }
+
+    removeAt(index){
+
+        if(!this.head){
+            return;
+        }
 
         if(index === 0){
             this.head = this.head.next;
@@ -46,19 +73,60 @@ class LinkedList{
         }
 
         let current = this.head;
-        let current_index = 0;
+        let currentIndex = 0;
 
         while(current.next){
 
             let previous = current;
             current = current.next;
-            current_index += 1;
+            currentIndex += 1;
 
-            if(current_index === index){
+            if(currentIndex === index){
                 previous.next = current.next;
                 break;
             }
         }
+    }
+
+    remove(data){
+
+        if(!this.head){
+            return;
+        }
+
+        if(this.head.data === data){
+            this.head = this.head.next;
+        }
+
+        let current = this.head;
+
+        while(current.next){
+
+            let previous = current;
+            current = current.next;
+
+            if(current.data === data){
+                
+                previous.next = current.next;
+                return;
+            }
+        }
+    }
+
+    size(){
+        if(!this.head){
+            return 0;
+        }
+
+        let current = this.head;
+        let currentIndex = 0;
+
+        while(current.next){
+            current = current.next;
+            currentIndex += 1;
+        }
+
+        return currentIndex + 1;
     }
 
     print(){
