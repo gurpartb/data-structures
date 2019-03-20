@@ -1,7 +1,8 @@
-// remove(int index): remove an item from the list by index.
-// remove(T data): remove an item from the list by value.
-// add(T data): add data to the list.
-// add(int index, T data): add data to a specific index in the list.
+// remove(data): remove an item from the list by index.
+// removeAt(index): remove an item from the list by value.
+// add(data): add data to the tail (end) of the list.
+// set(index, data): add data to a specific index in the list.
+// get(index): returns data at given index of the list.
 // size(): Get the number of items in the linked list.
 // print(): Print all the items in the linked list.
 
@@ -18,7 +19,7 @@ class LinkedList{
         this.head;
         this.add(data);
     }
-    
+
     add(data){
 
         if(!this.head){
@@ -35,7 +36,7 @@ class LinkedList{
         last.next = new Node(data);
     }
 
-    addAt(index, data){
+    set(index, data){
         if(!this.head){
             return;
         }
@@ -57,6 +58,28 @@ class LinkedList{
                 previous.next = new Node(data);
                 previous.next.next = current;
                 return;
+            }
+        }
+    }
+
+    get(index){
+        
+        if(!this.head){
+            return;
+        }
+
+        if(index === 0){
+            return this.head.data;
+        }
+
+        let current = this.head;
+        let currentIndex = 0;
+
+        while(current.next){
+            current = current.next;
+            currentIndex += 1;
+            if(currentIndex === index){
+                return current.data;
             }
         }
     }
@@ -83,7 +106,7 @@ class LinkedList{
 
             if(currentIndex === index){
                 previous.next = current.next;
-                break;
+                return;
             }
         }
     }

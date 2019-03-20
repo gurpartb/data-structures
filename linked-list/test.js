@@ -64,8 +64,8 @@ console.log(pass(
 
 list.removeAt(0);
 console.log(pass(
-    list.head.data === d1
-    && list.head.next.data === d2
+    list.get(0) === d1
+    && list.get(1) === d2
     && list.head.next.next === null
 ),`list.removeAt(0)`);
 
@@ -73,13 +73,13 @@ console.log(pass(
     list.size() === 2
 ),'list.size()');
 
-list.addAt(1, d0);
+list.set(1, d0);
 console.log(pass(
-    list.head.data === d1
-    && list.head.next.data === d0
-    && list.head.next.next.data === d2
-    && list.head.next.next.next === null
-), `list.addAt(1, ${d0})`);
+    list.get(0) === d1
+    && list.get(1) === d0
+    && list.get(2) === d2
+    && list.get(3) == null
+), `list.set(1, ${d0}), list.get(i) {i = [0,3]}`);
 
 console.log( pass(
     list.size() === 3
