@@ -31,6 +31,37 @@ class BinaryTree{
         }
     }
 
+    addIterative(data){
+
+        if(!this.data){
+            this.data = data;
+        }
+
+        let current = this;
+
+        while(true){
+            if(data < current.data){
+                if(!current.left){
+                    current.left = new BinaryTree(data);
+                    return;
+                }else{
+                    current = current.left;
+                }
+            }
+            if(data > current.data){
+                if(!current.right){
+                    current.right = new BinaryTree(data);
+                    return;
+                }else{
+                    current = current.right;
+                }
+            }
+            if(current.data === data){
+                return;
+            }
+        }
+    }
+
     print(){
 
         if(!this.data){
