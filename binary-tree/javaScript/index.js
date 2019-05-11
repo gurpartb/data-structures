@@ -10,10 +10,10 @@ class BinaryTree{
 
         if(!this.data){
             this.data = data;
+            return;
         }
 
         if(data < this.data){
-
             if(!this.left){
                 this.left = new BinaryTree(data);
             }else{
@@ -22,7 +22,6 @@ class BinaryTree{
         }
 
         if(data > this.data){
-
             if(!this.right){
                 this.right = new BinaryTree(data);
             } else {
@@ -35,11 +34,13 @@ class BinaryTree{
 
         if(!this.data){
             this.data = data;
+            return;
         }
 
         let current = this;
 
         while(true){
+
             if(data < current.data){
                 if(!current.left){
                     current.left = new BinaryTree(data);
@@ -48,6 +49,7 @@ class BinaryTree{
                     current = current.left;
                 }
             }
+
             if(data > current.data){
                 if(!current.right){
                     current.right = new BinaryTree(data);
@@ -56,6 +58,7 @@ class BinaryTree{
                     current = current.right;
                 }
             }
+            
             if(current.data === data){
                 return;
             }
